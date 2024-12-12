@@ -33,7 +33,7 @@ func main() {
 	answers := make([]ans, len(lines))
 
 	for i, line := range lines {
-		for _, char := range line {
+		for j, char := range line {
 			let := string(char)
 			if char == '\n' {
 				break
@@ -45,6 +45,20 @@ func main() {
 					answers[i].first = let
 					answers[i].last = let
 					answers[i].status = true
+				}
+			} else {
+				if j+4 < len(line) || j+6 < len(line) {
+					num, k := containsNum(line[j:])
+					if !k {
+						continue
+					}
+					if answers[i].status {
+						answers[i].last = strconv.Itoa(num)
+					} else {
+						answers[i].first = strconv.Itoa(num)
+						answers[i].last = strconv.Itoa(num)
+						answers[i].status = true
+					}
 				}
 			}
 		}
@@ -65,4 +79,35 @@ func inRange(a rune) bool {
 		return true
 	}
 	return false
+}
+
+func containsNum(word string) (int, bool) {
+	if strings.Contains(word, "one") {
+		return 1, true
+	}
+	if strings.Contains(word, "two") {
+		return 2, true
+	}
+	if strings.Contains(word, "three") {
+		return 3, true
+	}
+	if strings.Contains(word, "four") {
+		return 4, true
+	}
+	if strings.Contains(word, "five") {
+		return 5, true
+	}
+	if strings.Contains(word, "six") {
+		return 6, true
+	}
+	if strings.Contains(word, "seven") {
+		return 7, true
+	}
+	if strings.Contains(word, "eight") {
+		return 8, true
+	}
+	if strings.Contains(word, "nine") {
+		return 9, true
+	}
+	return -1, false
 }
