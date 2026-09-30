@@ -4,5 +4,5 @@
 A repository to store my aoc solutions
 
 # 2025
-Days : 1
-Stars: 2/50 🌟
+Days : 2
+Stars: 3/50 🌟
